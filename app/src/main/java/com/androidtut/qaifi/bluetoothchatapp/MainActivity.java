@@ -53,16 +53,16 @@ public class MainActivity extends AppCompatActivity {
                 case MESSAGE_STATE_CHANGED:
                     switch (message.arg1) {
                         case ChatUtils.STATE_NONE:
-                            setState("Not Connected");
+                            setState("Não conectado");
                             break;
                         case ChatUtils.STATE_LISTEN:
-                            setState("Not Connected");
+                            setState("Não conectado");
                             break;
                         case ChatUtils.STATE_CONNECTING:
-                            setState("Connecting...");
+                            setState("Conectando...");
                             break;
                         case ChatUtils.STATE_CONNECTED:
-                            setState("Connected: " + connectedDevice);
+                            setState("Conectado: " + connectedDevice);
                             break;
                     }
                     break;
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
     private void initBluetooth() {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
-            Toast.makeText(context, "No bluetooth found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Nenhum bluetooth encontrado", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -178,14 +178,14 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 new AlertDialog.Builder(context)
                         .setCancelable(false)
-                        .setMessage("Location permission is required.\n Please grant")
-                        .setPositiveButton("Grant", new DialogInterface.OnClickListener() {
+                        .setMessage("A permissão de localização é necessária.\n Por favor, conceda")
+                        .setPositiveButton("Aceitar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 checkPermissions();
                             }
                         })
-                        .setNegativeButton("Deny", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("Negar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 MainActivity.this.finish();

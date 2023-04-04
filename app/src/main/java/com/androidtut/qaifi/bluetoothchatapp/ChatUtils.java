@@ -248,14 +248,18 @@ public class ChatUtils {
             byte[] buffer = new byte[1024];
             int bytes;
 
-            try {
-                bytes = inputStream.read(buffer);
+            while (true) {
+                try {
+                    bytes = inputStream.read(buffer);
 
-                handler.obtainMessage(MainActivity.MESSAGE_READ, bytes, -1, buffer).sendToTarget();
-            } catch (IOException e) {
-                connectionLost();
+                    handler.obtainMessage(MainActivity.MESSAGE_READ, bytes, -1, buffer).sendToTarget();
+                } catch (IOException e) {
+                    connectionLost();
+                    break;
+                }
             }
         }
+
 
         public void write(byte[] buffer) {
             try {
@@ -278,7 +282,7 @@ public class ChatUtils {
     private void connectionLost() {
         Message message = handler.obtainMessage(MainActivity.MESSAGE_TOAST);
         Bundle bundle = new Bundle();
-        bundle.putString(MainActivity.TOAST, "Connection Lost");
+        bundle.putString(MainActivity.TOAST, "Conexão perdida");
         message.setData(bundle);
         handler.sendMessage(message);
 
@@ -288,7 +292,7 @@ public class ChatUtils {
     private synchronized void connectionFailed() {
         Message message = handler.obtainMessage(MainActivity.MESSAGE_TOAST);
         Bundle bundle = new Bundle();
-        bundle.putString(MainActivity.TOAST, "Cant connect to the device");
+        bundle.putString(MainActivity.TOAST, "Não é possível conectar ao dispositivo");
         message.setData(bundle);
         handler.sendMessage(message);
 

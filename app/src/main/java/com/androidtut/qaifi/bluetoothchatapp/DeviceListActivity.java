@@ -109,9 +109,9 @@ public class DeviceListActivity extends AppCompatActivity {
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                 progressScanDevices.setVisibility(View.GONE);
                 if (adapterAvailableDevices.getCount() == 0) {
-                    Toast.makeText(context, "No new devices found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Nenhum novo dispositivo encontrado", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, "Click on the device to start the chat", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Clique no dispositivo para iniciar o chat", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -137,7 +137,7 @@ public class DeviceListActivity extends AppCompatActivity {
     private void scanDevices() {
         progressScanDevices.setVisibility(View.VISIBLE);
         adapterAvailableDevices.clear();
-        Toast.makeText(context, "Scan started", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Verificação iniciada", Toast.LENGTH_SHORT).show();
 
         if (bluetoothAdapter.isDiscovering()) {
             bluetoothAdapter.cancelDiscovery();
